@@ -1,6 +1,7 @@
 package com.example.szlaki
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -26,7 +27,9 @@ class DetailFragment : Fragment() {
         super.onCreate(savedInstanceState)
         arguments?.let {
             id = it.getInt(ARG_ID)
-            trail = trails.firstOrNull { it.id == id }
+            Log.d("id", id.toString())
+            trail = trails.firstOrNull { it.id == id } ?: trails[0]
+            Log.d("trail", trail!!.name)
         }
     }
 
