@@ -1,6 +1,6 @@
 package com.example.szlaki
 
-class Szlak(
+class Trail(
     val id: Int,
     val name: String,
     val description: String,
