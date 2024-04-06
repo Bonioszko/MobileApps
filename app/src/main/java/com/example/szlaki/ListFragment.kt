@@ -5,8 +5,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Adapter
 import android.widget.ListView
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 
 /**
@@ -17,7 +20,7 @@ import androidx.fragment.app.Fragment
 
 
 class ListFragment : Fragment() {
-    private lateinit var listView: ListView
+    private lateinit var recyclerView: RecyclerView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,14 +29,18 @@ class ListFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_list, container, false)
 
-        val adapter = TrailAdapter(inflater.context, trails)
+        val adapter = CustomAdapter(trails)
 
-        listView = view.findViewById(R.id.listview_item)
-        listView.adapter = adapter
+        recyclerView = view.findViewById(R.id.recyclerView)
+        recyclerView.layoutManager = GridLayoutManager(context, 1)
+        recyclerView.adapter = adapter
 
-        listView.setOnItemClickListener { _, _, position, _ ->
-            onListItemClicked(position, requireActivity().layoutInflater)
-        }
+        adapter.setOnClickListener(object :
+            CustomAdapter.OnClickListener {
+            override fun onClick(position: Int, model: Trail) {
+                onListItemClicked(position, inflater)
+            }
+        })
 
         return view
     }
