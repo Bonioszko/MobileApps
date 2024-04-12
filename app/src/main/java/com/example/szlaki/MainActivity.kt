@@ -1,20 +1,28 @@
 package com.example.szlaki
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val fragment = FragmentList()
-        val transaction = supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.fragmentContainerView, fragment)
-        transaction.commit()
 
+        val listFragment = ListFragment()
+        val transaction1 = supportFragmentManager.beginTransaction()
+        transaction1.replace(R.id.list_frag, listFragment)
+        transaction1.commit()
+
+        // Render detail fragment only if container is present (tablet layout)
+        val detailContainer = findViewById<View>(R.id.detail_container)
+        if (detailContainer !== null) {
+            val detailFragment = DetailFragment.newInstance(-1)
+            val transaction2 = supportFragmentManager.beginTransaction()
+            transaction2.replace(R.id.detail_container, detailFragment)
+            transaction2.commit()
+        }
     }
 }

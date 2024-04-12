@@ -4,12 +4,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".FragmentList">
+    tools:context=".ListFragment">
 
     <!-- TODO: Update blank fragment layout -->
 
-    <ListView
-        android:id="@+id/listview_item"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
