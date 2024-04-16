@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.ListView
 import android.widget.TextView
+import android.widget.Toast
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -51,8 +52,10 @@ class DetailFragment : Fragment() {
         val nameTextView = view.findViewById<TextView>(R.id.szlak_name)
         val descriptionTextView = view.findViewById<TextView>(R.id.szlak_description)
         val pointsListView = view.findViewById<ListView>(R.id.szlak_list)
-
-
+        val fab = view.findViewById<View>(R.id.fab)
+        fab.setOnClickListener {
+            Toast.makeText(getContext(),"photo" , Toast.LENGTH_SHORT).show();
+        }
         nameTextView.text = trail?.name
         descriptionTextView.text = trail?.description
         val adapter = ArrayAdapter(inflater.context, android.R.layout.simple_list_item_1, trail?.points ?: arrayOf())        // Set the ArrayAdapter as the ListView's adapter
