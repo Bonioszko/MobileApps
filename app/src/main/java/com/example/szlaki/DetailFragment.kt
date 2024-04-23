@@ -56,6 +56,7 @@ class DetailFragment : Fragment() {
         fab.setOnClickListener {
             Toast.makeText(getContext(),"photo" , Toast.LENGTH_SHORT).show();
         }
+
         nameTextView.text = trail?.name
         descriptionTextView.text = trail?.description
         val adapter = ArrayAdapter(inflater.context, android.R.layout.simple_list_item_1, trail?.points ?: arrayOf())        // Set the ArrayAdapter as the ListView's adapter
