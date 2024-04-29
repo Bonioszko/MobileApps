@@ -1,19 +1,24 @@
 package com.example.szlaki
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import androidx.appcompat.widget.Toolbar
 
 class DetailActivity : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-
         setContentView(R.layout.activity_detail)
+
+        val actionBar = findViewById<Toolbar>(R.id.action_bar)
+        setSupportActionBar(actionBar)
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true);
+
+
+
         val id = intent.getIntExtra("id", -1)
         if (id != -1) {
             val fragment = DetailFragment.newInstance(id)

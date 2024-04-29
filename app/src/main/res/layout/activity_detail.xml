@@ -8,6 +8,13 @@
     android:layout_height="match_parent"
     tools:context=".DetailActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/action_bar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.DayNight.ActionBar" />
+
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerViewDetail"
