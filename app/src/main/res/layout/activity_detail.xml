@@ -11,32 +11,47 @@
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp" >
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        >
 
-<!--        <com.google.android.material.appbar.CollapsingToolbarLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent" >-->
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:contentScrim="@color/material_dynamic_primary95"
+            app:title="Szlaki"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            >
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_launcher_background"
+                app:layout_collapseMode="parallax"
+                />
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/action_bar"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:elevation="4dp"
-                app:layout_scrollFlags="scroll|enterAlways"
-                android:theme="@style/ThemeOverlay.AppCompat.DayNight.ActionBar" />
+                android:layout_height="50dp"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Dark" />
 
-<!--        </com.google.android.material.appbar.CollapsingToolbarLayout>-->
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
 
     </com.google.android.material.appbar.AppBarLayout>
+
 
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerViewDetail"
         android:name="com.example.szlaki.DetailFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         />
+
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
