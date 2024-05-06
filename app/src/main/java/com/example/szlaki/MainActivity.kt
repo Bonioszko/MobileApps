@@ -15,7 +15,8 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(actionBar)
 
 
-        val listFragment = ListFragment()
+//        val listFragment = ListFragment()
+        val listFragment = PagerFragment()
         val transaction1 = supportFragmentManager.beginTransaction()
         transaction1.replace(R.id.list_frag, listFragment)
         transaction1.commit()
