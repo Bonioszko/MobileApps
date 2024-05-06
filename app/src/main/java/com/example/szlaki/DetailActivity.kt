@@ -1,6 +1,8 @@
 package com.example.szlaki
 
 import android.os.Bundle
+import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -16,6 +18,11 @@ class DetailActivity : AppCompatActivity() {
         setSupportActionBar(actionBar)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true);
+
+        val fab = findViewById<View>(R.id.fab)
+        fab.setOnClickListener {
+            Toast.makeText(this,"photo" , Toast.LENGTH_SHORT).show();
+        }
 
 
 

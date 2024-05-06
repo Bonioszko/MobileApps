@@ -52,10 +52,7 @@ class DetailFragment : Fragment() {
         val nameTextView = view.findViewById<TextView>(R.id.szlak_name)
         val descriptionTextView = view.findViewById<TextView>(R.id.szlak_description)
         val pointsListView = view.findViewById<ListView>(R.id.szlak_list)
-        val fab = view.findViewById<View>(R.id.fab)
-        fab.setOnClickListener {
-            Toast.makeText(getContext(),"photo" , Toast.LENGTH_SHORT).show();
-        }
+
 
         nameTextView.text = trail?.name
         descriptionTextView.text = trail?.description
