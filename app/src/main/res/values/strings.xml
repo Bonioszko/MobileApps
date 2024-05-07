@@ -5,4 +5,10 @@
     <string name="Stop">Stop</string>
     <string name="Reset">Reset</string>
     <string name="Start">Start</string>
+    <string name="user_name">Android</string>
+    <string name="user_mail">android@gmail.com</string>
+    <string name= "drawer_import"> Test </string>
+    <string name= "drawer_gallery"> Gallery </string>
+    <string name="open_drawer">Otwórz szufladę nawigacyjną</string>
+    <string name="close_drawer">Zamknij szufladę nawigacyjną</string>
 </resources>
