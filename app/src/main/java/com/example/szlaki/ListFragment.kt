@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 class ListFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
+    private lateinit var itemsToDisplay: List<Trail>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,8 +29,18 @@ class ListFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_list, container, false)
+        val pageNumber = arguments?.getInt("object")  ?: 0
+        if (pageNumber == 1) {
+            return inflater.inflate(R.layout.first_page, container, false)
+        }
+        itemsToDisplay = when (pageNumber-1) {
+            1 -> trails.filter { it.level == "easy" }
+            2 -> trails.filter { it.level == "hard" }
+            else -> emptyList()
+        }
 
-        val adapter = CustomAdapter(trails)
+        val adapter = CustomAdapter(itemsToDisplay.toTypedArray())
+
 
         recyclerView = view.findViewById(R.id.recyclerView)
         recyclerView.layoutManager = GridLayoutManager(context, 1)
@@ -38,25 +49,24 @@ class ListFragment : Fragment() {
         adapter.setOnClickListener(object :
             CustomAdapter.OnClickListener {
             override fun onClick(position: Int, model: Trail) {
-                onListItemClicked(position, inflater)
+                onListItemClicked(model, inflater)
             }
         })
 
         return view
     }
 
-    private fun onListItemClicked(position: Int, inflater: LayoutInflater) {
+    private fun onListItemClicked(trail: Trail, inflater: LayoutInflater) {
         val detailContainer = activity?.findViewById<View>(R.id.detail_container)
         if (detailContainer != null) {
-            swapDetailFragment(position)
+            swapDetailFragment(trail)
         } else {
-            openNewFragment(position, inflater)
+            openNewFragment(trail, inflater)
         }
     }
 
     // Handles tablet layout
-    private fun swapDetailFragment(position: Int) {
-        val trail = trails[position]
+    private fun swapDetailFragment(trail: Trail) {
         val detailFragment = DetailFragment.newInstance(trail.id)
 
         val transaction2 = requireActivity().supportFragmentManager.beginTransaction()
@@ -67,9 +77,7 @@ class ListFragment : Fragment() {
         transaction2.commit()
     }
 
-    // Handles phone layout
-    private fun openNewFragment(position: Int, inflater: LayoutInflater) {
-        val trail = trails[position]
+    private fun openNewFragment(trail: Trail, inflater: LayoutInflater) {
         val intent = Intent(inflater.context, DetailActivity::class.java)
         intent.putExtra("id", trail.id)
         startActivity(intent)

@@ -10,9 +10,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.ListView
 import android.widget.TextView
 import android.widget.Toast
+import coil.load
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -44,11 +46,10 @@ class DetailFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Do something with id here...
-        // Inflate the layout for this fragment
+
         val view = inflater.inflate(R.layout.fragment_detail, container, false)
 
-        // Assuming you have TextViews with the ids: trail_name, trail_description, trail_points
+
         val nameTextView = view.findViewById<TextView>(R.id.szlak_name)
         val descriptionTextView = view.findViewById<TextView>(R.id.szlak_description)
         val pointsListView = view.findViewById<ListView>(R.id.szlak_list)
