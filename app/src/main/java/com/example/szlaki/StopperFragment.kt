@@ -33,7 +33,6 @@ class StopperFragment : Fragment() {
             handler.postDelayed(this, 1000)
         }
     }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -48,20 +47,15 @@ class StopperFragment : Fragment() {
         startButton.setOnClickListener {
             trail?.isRunning = true
         }
-
         stopButton.setOnClickListener {
             trail?.isRunning = false
         }
-
         resetButton.setOnClickListener {
-
             trail?.times?.add(String.format("%02d:%02d:%02d", trail?.hours, trail?.minutes, trail?.seconds))
             trail?.seconds = 0
             trail?.minutes = 0
             trail?.hours = 0
-
             timeTextView.text = String.format("%02d:%02d:%02d", trail?.hours, trail?.minutes, trail?.seconds)
-
             trail?.isRunning = false
         }
 

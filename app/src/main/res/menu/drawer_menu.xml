@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/drawer_import"
-    android:title= "@string/drawer_import" />
+        android:id="@+id/drawer_loading"
+    android:title= "@string/drawer_loading" />
     <item
         android:id="@+id/drawer_gallery"
     android:title= "@string/drawer_gallery" />

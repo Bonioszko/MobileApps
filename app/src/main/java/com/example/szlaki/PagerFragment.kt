@@ -45,6 +45,11 @@ class DemoCollectionPagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapte
     }
 
     override fun getPageTitle(position: Int): CharSequence {
-        return "Strona ${(position + 1)}"
+        return when (position) {
+            0 -> "Description"
+            1 -> "Easy"
+            2 -> "Hard"
+            else -> "Undefined"
+        }
     }
 }

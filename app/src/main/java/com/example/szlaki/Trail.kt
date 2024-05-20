@@ -6,7 +6,9 @@ class Trail(
     val description: String,
     val points: Array<String>,
     val thumbnail: String,
+    val level: String,
     var times: MutableList<String> = mutableListOf(),
+
     var isRunning: Boolean = false,
     var seconds: Int = 0,
     var minutes: Int = 0,

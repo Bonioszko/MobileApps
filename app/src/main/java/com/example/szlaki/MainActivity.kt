@@ -4,6 +4,7 @@ import android.animation.AnimatorListenerAdapter
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
@@ -38,12 +39,8 @@ class MainActivity : AppCompatActivity() {
             R.string.open_drawer,
             R.string.close_drawer
         )
-
         drawer.addDrawerListener(toggle)
-
-
         toggle.syncState()
-
         navigationView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.drawer_gallery -> {
@@ -52,8 +49,13 @@ class MainActivity : AppCompatActivity() {
                     transaction.replace(R.id.list_frag, galleryFragment)
                     transaction.commit()
                 }
+                R.id.drawer_loading ->{
+                    val intent = Intent(this, SplashActivity::class.java)
+                    startActivity(intent)
+                }
 
             }
+
             drawer.closeDrawer(GravityCompat.START)
             true
         }
