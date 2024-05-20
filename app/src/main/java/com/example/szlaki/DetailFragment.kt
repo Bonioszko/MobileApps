@@ -44,11 +44,10 @@ class DetailFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Do something with id here...
-        // Inflate the layout for this fragment
+
         val view = inflater.inflate(R.layout.fragment_detail, container, false)
 
-        // Assuming you have TextViews with the ids: trail_name, trail_description, trail_points
+
         val nameTextView = view.findViewById<TextView>(R.id.szlak_name)
         val descriptionTextView = view.findViewById<TextView>(R.id.szlak_description)
         val pointsListView = view.findViewById<ListView>(R.id.szlak_list)
